@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "composite": true,          // necesario si usas project references (opcional)
+      "declaration": true,        // genera archivos .d.ts
+      "declarationMap": true,     // útil para debug
+      "emitDeclarationOnly": true,
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "node",
+      "target": "ES2020",
+      "module": "ESNext",
+      "outDir": "dist"
+    },
+    "include": ["./**/*.ts"]
+  }
