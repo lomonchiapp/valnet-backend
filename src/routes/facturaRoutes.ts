@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { obtenerFacturas, FacturaMikrowispLocal } from '../services/mikrowisp/api';
 import { asyncHandler } from '../middleware/asyncHandler';
 
-const router = Router();
+const router: Router = Router();
 
 /**
  * @route GET /api/v1/GetInvoices

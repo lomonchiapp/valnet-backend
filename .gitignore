@@ -1,1 +1,23 @@
-\n# Firebase\nserviceAccountKey.json
+# Firebase
+serviceAccountKey.json
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# TypeScript
+dist/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Vercel
+.vercel

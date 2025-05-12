@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const clienteRoutes_1 = __importDefault(require("./routes/clienteRoutes"));
 const planRoutes_1 = __importDefault(require("./routes/planRoutes"));
 const preRegistroRoutes_1 = __importDefault(require("./routes/preRegistroRoutes"));
+const facturaRoutes_1 = __importDefault(require("./routes/facturaRoutes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = parseInt(process.env.PORT || '3000', 10);
@@ -23,7 +24,8 @@ app.get('/', (_req, res) => {
 // Rutas de recursos
 app.use('/api/clientes', clienteRoutes_1.default);
 app.use('/api/planes', planRoutes_1.default);
-app.use('/api/pre-registro', preRegistroRoutes_1.default);
+app.use('/api/v1/GetInvoices', facturaRoutes_1.default);
+app.use('/api/v1/NewPreRegistro', preRegistroRoutes_1.default);
 // Manejador de errores
 app.use((err, _req, res, _next) => {
     console.error(err.stack);

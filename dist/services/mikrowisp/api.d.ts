@@ -47,12 +47,39 @@ interface FacturasParams {
     estado?: string;
     fechaInicio?: string;
     fechaFin?: string;
+    token?: string;
+    idcliente?: string;
+    fechapago?: string;
+    formapago?: string;
 }
 /**
  * Obtiene lista de facturas desde MikroWisp
  */
 export declare const obtenerFacturas: (params?: FacturasParams) => Promise<{
     success: boolean;
-    data: FacturaMikrowispLocal[];
+    data: FacturaMikrowispLocal[] | any;
 }>;
+/**
+ * Interfaz para los datos de un nuevo ticket
+ */
+export interface NuevoTicket {
+    token?: string;
+    idcliente: number;
+    asunto: string;
+    contenido: string;
+    dp?: number;
+    prioridad?: number;
+    fechavisita: string;
+    turno: string;
+    agendado: string;
+    solicitante?: string;
+    adjunto?: {
+        nombre?: string;
+        file?: string;
+    };
+}
+/**
+ * Crea un nuevo ticket en MikroWisp
+ */
+export declare const crearTicket: (datos: NuevoTicket) => Promise<any>;
 export {};

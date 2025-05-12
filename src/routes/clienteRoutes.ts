@@ -1,7 +1,7 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
 import { Cliente, obtenerClientes, obtenerClientePorId, crearCliente, actualizarCliente, eliminarCliente } from '../models/Cliente';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 // Obtener todos los clientes
 router.get('/', (_req: Request, res: Response) => {

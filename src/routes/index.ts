@@ -4,7 +4,7 @@ import preRegistroRoutes from './preRegistroRoutes';
 import facturaRoutes from './facturaRoutes';
 import ticketRoutes from './ticketRoutes';
 
-const router = Router();
+const router: Router = Router();
 
 // Rutas de información general
 router.get('/', (req, res) => {

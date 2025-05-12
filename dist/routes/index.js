@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const clienteRoutes_1 = __importDefault(require("./clienteRoutes"));
-const planRoutes_1 = __importDefault(require("./planRoutes"));
 const preRegistroRoutes_1 = __importDefault(require("./preRegistroRoutes"));
 const facturaRoutes_1 = __importDefault(require("./facturaRoutes"));
+const ticketRoutes_1 = __importDefault(require("./ticketRoutes"));
 const router = (0, express_1.Router)();
 // Rutas de información general
 router.get('/', (req, res) => {
@@ -18,10 +18,13 @@ router.get('/', (req, res) => {
     });
 });
 // Rutas de MikroWisp
-router.use('/clientes', clienteRoutes_1.default);
-router.use('/planes', planRoutes_1.default);
-router.use('/pre-registro', preRegistroRoutes_1.default);
-router.use('/facturas', facturaRoutes_1.default);
+router.use('/v1/GetClientsDetails', clienteRoutes_1.default);
+//nuevo ticket a soporte
+router.use('/v1/NewTicket', ticketRoutes_1.default);
+//Nuevo PreRegistro
+router.use('/v1/NewPreRegistro', preRegistroRoutes_1.default);
+// Rutas de Facturas
+router.use('/v1/GetInvoices', facturaRoutes_1.default);
 // Aquí se pueden agregar más rutas para otros recursos
 exports.default = router;
 //# sourceMappingURL=index.js.map

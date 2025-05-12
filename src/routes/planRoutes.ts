@@ -1,7 +1,7 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
 import { obtenerPlanes, obtenerPlanPorId, crearPlan, actualizarPlan, eliminarPlan } from '../models/Plan';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 // Obtener todos los planes
 router.get('/', (_req: Request, res: Response) => {

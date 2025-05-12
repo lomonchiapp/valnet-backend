@@ -7,7 +7,7 @@ import { requestLogger } from './middleware/requestLogger';
 import routes from './routes';
 
 // Inicialización de la aplicación
-const app = express();
+const app: express.Application = express();
 
 // Middlewares globales
 app.use(helmet()); // Seguridad

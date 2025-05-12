@@ -72,13 +72,28 @@ const initializeFirebase = () => {
                 projectId: firebaseConfig.projectId
             });
         }
+        else if (process.env.FIREBASE_PRIVATE_KEY && process.env.FIREBASE_CLIENT_EMAIL) {
+            // Para Vercel - usar variables de entorno
+            console.log('Usando credenciales de Firebase desde variables de entorno');
+            // Asegurarse de que la clave privada esté correctamente formateada
+            const privateKey = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n');
+            return admin.initializeApp({
+                credential: admin.credential.cert({
+                    projectId: process.env.FIREBASE_PROJECT_ID || firebaseConfig.projectId,
+                    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+                    privateKey: privateKey
+                }),
+                storageBucket: process.env.FIREBASE_STORAGE_BUCKET || firebaseConfig.storageBucket,
+                projectId: process.env.FIREBASE_PROJECT_ID || firebaseConfig.projectId
+            });
+        }
         else {
-            // Si no hay archivo de credenciales, intentamos usar credenciales del entorno
+            // Si no hay archivo de credenciales ni variables de entorno, inicialización mínima
             console.log('Intentando usar credenciales de entorno');
             // Para desarrollo local - esto permite probar sin credenciales completas
             return admin.initializeApp({
-                projectId: firebaseConfig.projectId,
-                storageBucket: firebaseConfig.storageBucket
+                projectId: process.env.FIREBASE_PROJECT_ID || firebaseConfig.projectId,
+                storageBucket: process.env.FIREBASE_STORAGE_BUCKET || firebaseConfig.storageBucket
             });
         }
     }
@@ -86,7 +101,7 @@ const initializeFirebase = () => {
         console.error('Error al inicializar Firebase:', error);
         // Inicialización mínima para desarrollo
         return admin.initializeApp({
-            projectId: firebaseConfig.projectId
+            projectId: process.env.FIREBASE_PROJECT_ID || firebaseConfig.projectId
         }, 'valnet-dev-minimal');
     }
 };

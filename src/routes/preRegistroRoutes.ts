@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import {
   crearPreRegistro,
   obtenerPreRegistros,
@@ -7,7 +7,7 @@ import {
   eliminarPreRegistro
 } from '../controllers/preRegistroController';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 /**
  * @route   POST /api/pre-registro

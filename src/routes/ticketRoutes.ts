@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { crearTicket, NuevoTicket } from '../services/mikrowisp/api';
 import { asyncHandler } from '../middleware/asyncHandler';
 
-const router = Router();
+const router: Router = Router();
 
 /**
  * @route POST /api/v1/NewTicket
